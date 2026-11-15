@@ -1,3 +1,7 @@
+![Bash](https://img.shields.io/badge/Bash-4EAA25?style=flat&logo=gnu-bash&logoColor=white)
+![Platform](https://img.shields.io/badge/Platform-Linux-FCC624?style=flat&logo=linux&logoColor=black)
+![License](https://img.shields.io/badge/License-MIT-blue?style=flat)
+
 # check-my-disk
 
 A simple script in Bash that displays the percentage of how full your disk partition is, and warns you if it goes over
