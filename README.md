@@ -1,25 +1,33 @@
-![Bash](https://img.shields.io/badge/Bash-4EAA25?style=flat&logo=gnu-bash&logoColor=white)
-![Platform](https://img.shields.io/badge/Platform-Linux-FCC624?style=flat&logo=linux&logoColor=black)
-![License](https://img.shields.io/badge/License-MIT-blue?style=flat)
-
 # check-my-disk
 
-A simple script in Bash that displays the percentage of how full your disk partition is, and warns you if it goes over
-80%.
+[![License: MIT](https://shields.io)](LICENSE)
+[![Lint Bash](https://github.com)](https://github.com)
+
+A lightweight Bash script that checks Linux disk partition usage, displays human-readable space metrics, and warns you with top space-consuming directories if usage crosses a threshold.
 
 ## How to run it
 
-Firstly, make it executable:
-```chmod +x check_disk.sh```
+Make the script executable once:
+```bash
+chmod +x check_disk.sh
+```
 
-Then run it:
-```./check_disk.sh```
+Run with default settings (**80%** warning threshold on **`/`**):
+```bash
+./check_disk.sh
+```
+
+Or pass a custom **threshold percentage** and **mount path**:
+```bash
+./check_disk.sh 85 /home
+```
+
+## Exit codes
+* **`0`** — Disk usage is below the warning threshold (`OK`).
+* **`1`** — Disk usage has reached or exceeded the threshold (`WARNING`).
 
 ### Note on AI usage
-
-I briefly used AI to help me formulate this README as I am only starting to learn how to use Markdown and Bash
-(and Linux too!) but I understand all eight lines of my code.
+I used AI to help structure the README, CLI flags, and GitHub Actions linter while reviewing and understanding every line of code in the repository.
 
 ### Contributing
-If you think that a new addition would be beneficial for Check My Disk, feel free to open an issue or send a pull
-request. Thank you :)
+If you think a new addition would be beneficial for Check My Disk, feel free to open an issue or send a pull request. Thank you :)
