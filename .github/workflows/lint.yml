@@ -1,9 +1,17 @@
 name: Lint Bash
-on: [push, pull_request]
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
 jobs:
   shellcheck:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Run ShellCheck
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run ShellCheck on check_disk.sh
         run: shellcheck check_disk.sh
