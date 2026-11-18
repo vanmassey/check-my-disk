@@ -1,20 +1,17 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
 
-QUOTES=(
-"A wise sysadmin once said: The less full your drive, the more peaceful your life."
-"Disk space is like closet space: You always think you have enough until you don't."
-"Delete node_modules. Just do it. I dare you."
-"May your caches be clear and your root partition be green."
-)
+THRESHOLD="${1:-80}"
+TARGET="${2:-/}"
 
-SPACE_USED=$(df -h / | awk 'NR==2 {print $5}' | tr -d '%')
+read -r USED AVAIL PCT <<< "$(df -hP "$TARGET" | awk 'NR==2 {gsub(/%/,"",$5); print $3, $4, $5}')"
 
-if [ "$SPACE_USED" -gt 80 ]; then
-echo -e "\e[31mWARNING: Your root partition is ${SPACE_USED}% full! You are running out of space!\e[0m"
-else
-echo -e "\e[32mYour root partition is ${SPACE_USED}% full. You have plenty of space.\e[0m"
-
-# Pick a random quote
-RANDOM_QUOTE=${QUOTES[$RANDOM % ${#QUOTES[@]}]}
-echo "$RANDOM_QUOTE"
+if [ "$PCT" -ge "$THRESHOLD" ]; then
+    echo "WARNING: $TARGET is ${PCT}% full (${USED} used, ${AVAIL} available) — exceeds ${THRESHOLD}% threshold!"
+    echo "Top space-consuming directories in $TARGET:"
+    du -xh --max-depth=1 "$TARGET" 2>/dev/null | sort -hr | head -n 4
+    exit 1
 fi
+
+echo "OK: $TARGET is ${PCT}% full (${USED} used, ${AVAIL} available)"
+exit 0
