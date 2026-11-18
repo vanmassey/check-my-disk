@@ -1,7 +1,13 @@
 # check-my-disk
 
-[![License: MIT](https://shields.io)](LICENSE)
-[![Lint Bash](https://github.com)](https://github.com)
+![Platform](https://img.shields.io/badge/Platform-Linux-yellow?logo=linux&logoColor=black)
+![Shell](https://img.shields.io/badge/Shell-Bash-4EAA25?logo=gnubash&logoColor=white)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Lint Bash](https://github.com/vanmassey/check-my-disk/actions/workflows/lint.yml/badge.svg)](https://github.com/vanmassey/check-my-disk/actions/workflows/lint.yml)
+![GitHub last commit](https://img.shields.io/github/last-commit/vanmassey/check-my-disk)
+![GitHub issues](https://img.shields.io/github/issues/vanmassey/check-my-disk)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/vanmassey/check-my-disk)
+![GitHub stars](https://img.shields.io/github/stars/vanmassey/check-my-disk)
 
 A lightweight Bash script that checks Linux disk partition usage, displays human-readable space metrics, and warns you with top space-consuming directories if usage crosses a threshold.
 
